@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa de Integridad</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #80002b;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .title {
+            background-color: #c50040;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .description {
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+
+        .button {
+            background-color: #c50040;
+            color: white;
+            border: 1px solid white;
+            padding: 10px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: white;
+            color: #80002b;
+        }
+
+        .form-container {
+            margin-top: 40px;
+            background-color: #c50040;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .form-container p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-container button {
+            background-color: white;
+            color: #80002b;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #80002b;
+            color: white;
+        }
+    </style>
+    <script>
+        function sendMail() {
+            var contacto = document.getElementById("name").value;
+            var mensaje = document.getElementById("message").value;
+
+            if (mensaje.trim() === "") {
+                alert("Por favor, escribe una denuncia antes de enviar.");
+                return false;
+            }
+
+            var destinatario = "rrhh_noa@contreras.com.ar"; // CAMBIAR POR EL CORREO REAL
+            var asunto = encodeURIComponent("Nueva denuncia anónima");
+            var cuerpo = encodeURIComponent("Contacto (opcional): " + contacto + "\n\nDenuncia:\n" + mensaje);
+
+            // Abrir cliente de correo predeterminado
+            window.location.href = "mailto:" + destinatario + "?subject=" + asunto + "&body=" + cuerpo;
+
+            return false; // Evita que la página se recargue
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Programa de Integridad</div>
+        
+        <div class="button-container">
+            <a href="https://contreras.com.ar/wp-content/uploads/2024/03/Codigo-de-Conducta-CONTRERAS.pdf" class="button" target="_blank">Código de Conducta</a>
+            <a href="https://contreras.com.ar/wp-content/uploads/2024/03/Programa-de-Integridad-CONTRERAS.pdf" class="button" target="_blank">Programa de Integridad</a>
+            <a href="https://contreras.com.ar/wp-content/uploads/2024/02/CODIGO-DE-CONDUCTA_PROVEEDORES_FINAL.pdf" class="button" target="_blank">Conducta de Proveedores</a>
+            <a href="https://contreras.com.ar/wp-content/uploads/2024/03/PROTOCOLO_DE_LICENCIA_Y_ACTUACION_POR_VIOLENCIA_DE_GENERO.pdf" class="button" target="_blank">Protocolo ante la Violencia de Género</a>
+            <a href="https://contreras.com.ar/wp-content/uploads/2024/10/Reglamento-para-la-prevencion-de-ilicitos-en-la-interaccion-con-el-sector-publico-CONTRERAS.pdf" class="button" target="_blank">Reglamento para la Prevención de Ilícitos con el Sector Público</a>
+        </div>
+        <div class="form-container">
+            <h2>Denuncia Anónima</h2>
+            <p>Gracias por ponerte en contacto con nuestro canal de denuncias. Hemos recibido tu mensaje y te aseguramos que será tratado con total confidencialidad. Tu denuncia será revisada por el equipo correspondiente. Si es necesario, te contactaremos para obtener más información sobre tu denuncia.
+ 
+Tu participación es fundamental. Saludos!
+ </p>
+            <form onsubmit="return sendMail()">
+                <input type="text" id="name" name="contacto" placeholder="Número de teléfono o correo electrónico (opcional)">
+                <textarea id="message" name="denuncia" rows="5" placeholder="Escribe aquí tu denuncia..."></textarea>
+                <button type="submit">Enviar Denuncia</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
